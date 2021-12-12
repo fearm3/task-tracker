@@ -1,9 +1,12 @@
 // import React from 'react'
 import { FaTrashAlt } from "react-icons/fa";
 
-const Task = ({ task, colorDelete, deleteTask }) => {
+const Task = ({ task, colorDelete, deleteTask, toggleDone }) => {
   return (
-    <div className="task">
+    <div
+      className={`task ${task.isDone ? "done" : ""}`}
+      onDoubleClick={() => toggleDone(task.id)}
+    >
       <h3>
         {task.text}
         <FaTrashAlt

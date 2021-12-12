@@ -26,10 +26,17 @@ function App() {
     },
   ]);
 
+  const [showAddTask, setShowAddTask] = useState(false);
+
   //* add task
 
-  const addTask = () => {
-    console.log("addTask from App.js");
+  const addTask = (newTask) => {
+    // console.log("addTask from App.js");
+    const id = Math.floor(Math.random() * 100 + 1);
+    console.log(id);
+    console.log(newTask);
+    const addNewTask = { id, ...newTask };
+    setTasks([...tasks, addNewTask]);
   };
 
   //*delete Task
@@ -38,11 +45,33 @@ function App() {
     setTasks(tasks.filter((task) => task.id !== deletedTaskId));
   };
 
+  //* Toogle Done
+  const toggleDone = (toggleDoneId) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === toggleDoneId ? { ...task, isDone: !task.isDone } : task
+      )
+    );
+  };
+
+  //*Show add task
+  const toggleShow = () => setShowAddTask(!showAddTask);
+
+  //delete all tasks
+
   return (
     <div className="container">
-      <Header title="TASK TRACKER" />
-      <AddTask addTask={addTask} />
-      <Tasks tasks={tasks} deleteTask={deleteTask} />
+      <Header
+        title="TASK TRACKER"
+        toggleShow={toggleShow}
+        showAddTask={showAddTask}
+      />
+      {showAddTask && <AddTask addTask={addTask} />}
+      {tasks.length > 0 ? (
+        <Tasks tasks={tasks} deleteTask={deleteTask} toggleDone={toggleDone} />
+      ) : (
+        <p style={{ textAlign: "center" }}>NO TASK TO SHOW</p>
+      )}
     </div>
   );
 }

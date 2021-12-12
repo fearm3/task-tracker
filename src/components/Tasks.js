@@ -1,7 +1,7 @@
 import React from "react";
 import Task from "./Task";
 
-const Tasks = ({ tasks, deleteTask }) => {
+const Tasks = ({ tasks, deleteTask, toggleDone }) => {
   // console.log("tasks", tasks);
   return (
     <div>
@@ -11,6 +11,7 @@ const Tasks = ({ tasks, deleteTask }) => {
           task={task}
           colorDelete="red"
           deleteTask={deleteTask}
+          toggleDone={toggleDone}
         />
       ))}
     </div>

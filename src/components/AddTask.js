@@ -4,16 +4,11 @@ const AddTask = ({ addTask }) => {
   const [day, setDay] = useState("");
   const onSubmit = (e) => {
     e.preventDefault();
-    addTask();
-    // console.log(text);
-    // console.log(day);
+    addTask({ text, day, isDone: false });
+    setText("");
+    setDay("");
   };
-  //   const onSubmit = (e) => {
 
-  //     addTask({ text, day, isDone: false });
-  //     setText("");
-  //     setDay("");
-  //   };
   return (
     <form className="add-form" onSubmit={onSubmit}>
       <div className="form-control">
