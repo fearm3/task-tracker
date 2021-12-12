@@ -1,9 +1,10 @@
 // import React from 'react'
 // import PropTypes from "prop-types";
+// import { FaTrashRestore } from "react-icons/fa";
 
 import Button from "./Button";
 
-const Header = ({ title, toggleShow, showAddTask }) => {
+const Header = ({ title, toggleShow, showAddTask, deleteAllTask }) => {
   const handleClick = () => {
     console.log("Click with handleClick from Header");
   };
@@ -16,6 +17,9 @@ const Header = ({ title, toggleShow, showAddTask }) => {
         handleClick={handleClick}
         toggleShow={toggleShow}
       />
+      <button className="allDeleteBtn" onClick={deleteAllTask}>
+        Delete All Task
+      </button>
     </header>
   );
 };

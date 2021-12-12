@@ -7,21 +7,33 @@ import AddTask from "./components/AddTask";
 function App() {
   const [tasks, setTasks] = useState([
     {
+      id: 5,
+      text: "Ready React",
+      day: "All time i need.",
+      isDone: true,
+    },
+    {
       id: 1,
       text: "Study React Pre-Class Notes",
-      day: "Dec 12th at 2:30pm",
-      isDone: false,
+      day: "Dec 12th at 4:00pm",
+      isDone: true,
     },
     {
       id: 2,
       text: "Feed the Dog",
-      day: "Dec 13th at 1:30pm",
+      day: "Dec 23th at 6:30pm",
       isDone: true,
     },
     {
       id: 3,
       text: "Attend In-Class",
-      day: "Dec 14th at 3:00pm",
+      day: "Dec 12th at 5:00pm",
+      isDone: false,
+    },
+    {
+      id: 4,
+      text: "Too many time practice!",
+      day: "Dec 12th at 5:00pm +",
       isDone: false,
     },
   ]);
@@ -58,6 +70,9 @@ function App() {
   const toggleShow = () => setShowAddTask(!showAddTask);
 
   //delete all tasks
+  const deleteAllTask = () => {
+    setTasks([]);
+  };
 
   return (
     <div className="container">
@@ -65,6 +80,7 @@ function App() {
         title="TASK TRACKER"
         toggleShow={toggleShow}
         showAddTask={showAddTask}
+        deleteAllTask={deleteAllTask}
       />
       {showAddTask && <AddTask addTask={addTask} />}
       {tasks.length > 0 ? (
